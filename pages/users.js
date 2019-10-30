@@ -2,12 +2,21 @@ import React from 'react'
 import axios from 'axios'
 
 import Link from 'next/link'
+import Head from 'next/head'
+import withAnalytics from '../src/hocs/withAnalytics'
 
 const User = ({ users }) => (
   <div>
+    <Head>
+      <title>Next.js - Users</title>
+    </Head>
     <ul>
       { users.map(user => (
-        <li key={user.id}>{user.login}</li>
+        <li key={user.id}>
+            <Link href={`/users/${user.login}`}>
+                <a>{user.login}</a>
+            </Link>
+        </li>
       )) }
     </ul>
     <Link href='/'>
@@ -22,4 +31,4 @@ User.getInitialProps = async () => {
   return { users: response.data }
 }
 
-export default User
+export default withAnalytics()(User)
