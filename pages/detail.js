@@ -8,7 +8,7 @@ const Detail = ({ user }) => (
     <div>
         <h1>{user.login}</h1>
         <Link href={user.html_url}>
-            <a>Acessar Perfil</a>
+            <a target="_blank">Acessar Perfil</a>
         </Link>
         <img src={user.avatar_url} width='200px'/>
     </div>
